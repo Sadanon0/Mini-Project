@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เพิ่ม/แก้ไขสินค้า</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-blue-200 to-green-200 p-6">
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #b2ebf2); /* ไล่สีฟ้าอ่อน */
+        }
+    </style>
+
+    <div class="container mx-auto max-w-lg">
+        <h1 class="text-2xl font-bold mb-4 text-center text- ">เพิ่ม/แก้ไขสินค้า</h1>
+        <form method="post" action="{% url 'product_create' %}" enctype="multipart/form-data" class="space-y-4 bg-white p-6 rounded-lg shadow-lg">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">บันทึก</button>
+                <a href="{% url 'product_list' %}" class="btn btn-secondary">ยกเลิก</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

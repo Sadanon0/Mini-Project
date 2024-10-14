@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.75rem;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .btn-outline-secondary {
+            margin-top: 10px;
+            color: #6c757d;
+            border-color: #6c757d;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+        .helptext {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>สมัครสมาชิก</h1>
+        <form method="POST" class="rounded-lg">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">ชื่อผู้ใช้:</label>
+                <input type="text" name="username" maxlength="150" autofocus required aria-describedby="id_username_helptext" id="id_username" class="form-control">
+                <span class="helptext" id="id_username_helptext">จำเป็นต้องกรอก ไม่เกิน 150 ตัวอักษร ตัวอักษร, ตัวเลข และ @/./+/-/_ เท่านั้น.</span>
+
+                <label for="id_password1">รหัสผ่าน:</label>
+                <input type="password" name="password1" autocomplete="new-password" aria-describedby="id_password1_helptext" id="id_password1" class="form-control">
+                <span class="helptext" id="id_password1_helptext"><ul><li>รหัสผ่านของคุณไม่ควรคล้ายกับข้อมูลส่วนตัวอื่น ๆ ของคุณ.</li><li>รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร.</li><li>รหัสผ่านไม่ควรเป็นรหัสผ่านที่ใช้บ่อย.</li><li>รหัสผ่านไม่ควรเป็นตัวเลขทั้งหมด.</li></ul></span>
+
+                <label for="id_password2">ยืนยันรหัสผ่าน:</label>
+                <input type="password" name="password2" autocomplete="new-password" aria-describedby="id_password2_helptext" id="id_password2" class="form-control">
+                <span class="helptext" id="id_password2_helptext">กรอกรหัสผ่านเดียวกันกับที่กรอกไว้ก่อนหน้านี้ เพื่อยืนยัน.</span>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+                สมัครสมาชิก
+            </button>
+        </form>
+
+        <div class="text-center mt-4">
+            <a href="/login/" class="btn btn-outline-secondary">
+                กลับไปยังหน้าลงชื่อเข้าใช้
+            </a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

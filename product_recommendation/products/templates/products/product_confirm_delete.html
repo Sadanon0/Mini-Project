@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลบสินค้า</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-lightblue-100 p-6">
+    <style>
+        body {
+            background-color: #e0f7fa; /* สีฟ้าอ่อน */
+        }
+    </style>
+    </style>
+    <div class="container mx-auto max-w-lg bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-center mb-4">ลบสินค้า</h1>
+        <p class="text-center text-gray-700 mb-6">คุณแน่ใจหรือไม่ว่าต้องการลบ "{{ product.name }}"?</p>
+        
+        <form method="post" class="flex flex-col items-center space-y-4">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-block">ใช่, ลบ</button>
+        </form>
+        
+        <a href="{% url 'product_list' %}" class="text-primary text-center">ยกเลิก</a>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

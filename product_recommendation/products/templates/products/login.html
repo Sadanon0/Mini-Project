@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-lightblue-100 p-6">
+    <style>
+        body {
+            background-color: #e0f7fa; /* สีฟ้าอ่อน */
+        }
+    </style>
+    <div class="container max-w-md mx-auto mt-10">
+        <h1 class="text-2xl text-center font-niramit mb-6">เข้าสู่ระบบ</h1>
+        <form method="post" class="bg-white p-6 rounded-lg shadow-md">
+            {% csrf_token %}
+            <div class="form-group mb-4">
+                <label for="username" class="font-weight-bold">ชื่อผู้ใช้:</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="form-group mb-4">
+                <label for="password" class="font-weight-bold">รหัสผ่าน:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-full">เข้าสู่ระบบ</button>
+
+            <div class="text-center mt-4">
+                <a href="{% url 'signup' %}" class="text-blue-500 hover:text-blue-700 font-bold py-2 px-4 rounded">
+                    สมัครสมาชิก
+                </a>
+            </div>                       
+
+            <div class="text-center mt-4">
+                <a href="{% url 'product_list' %}" class="btn btn-secondary">
+                    กลับไปยังหน้ารายการสินค้า
+                </a>
+            </div>
+        </form>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

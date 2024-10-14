@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>รายละเอียดสินค้า</title>
+</head>
+<body class="bg-lightblue-100 p-6">
+    <style>
+        body {
+            background-color: #e0f7fa; /* สีฟ้าอ่อน */
+        }
+    </style>
+
+<div class="container max-w-lg mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
+    <!-- หัวข้อ -->
+    <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">รายละเอียดสินค้า: ยาดมคุณเปรม</h2>
+    
+    <div>
+        <img class="img-fluid mx-auto my-4 rounded-lg" src="{% static 'images/คุณเปรมา.jpg' %}" alt="ยาดมสมุนไพร คุณเปรมา"> 
+        
+        <h1 class="text-center text-3xl font-niramit mb-4">ยาดมสมุนไพร คุณเปรมา</h1>
+        
+        <h3 class="my-4 text-2xl p-1 font-niramit text-gray-600 text-left">
+            ยาดมสมุนไพร ตราคุณเปรมา (ยาดมคุณเปรม) 
+            <br>ยาดมกระปุกแก้ว กลิ่นหอมชื่นใจ หอมนาน 
+            <br>ผลิตด้วยสมุนไพรไทยแท้ 100% 
+            <br>มีส่วนผสมของกานพลู เปราะหอม ชะเอมเทศ น้ำมันระกำ เปปเปอร์มินต์ เกล็ดสะระแหน่ ยูคาลิปตัส กระวาน และพิมเสน 
+            <br>ช่วยบรรเทาอาการเวียนศีรษะ คัดจมูก หรือจะสูดทางปากให้กลิ่นผ่านลำคอจะช่วยบรรเทาอาการไอ ระคายคอ
+            <br><br>
+            <p class="text-lg font-semibold text-left">ขนาด: <span class="font-normal">8 กรัม</span></p>
+            <p class="text-lg font-semibold text-left">ราคาปกติ: <span class="font-normal">40 บาท</span></p>
+        </h3>
+    </div>
+    
+    <!-- ปุ่มย้อนกลับ -->
+    <div class="text-center mt-6">
+        <a href="{% url 'product_list' %}" class="btn btn-success">
+            กลับไปยังหน้ารายการสินค้า
+        </a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

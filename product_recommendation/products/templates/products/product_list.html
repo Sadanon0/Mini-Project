@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Niramit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-lightblue-100 p-6">
+    <style>
+        body {
+            background-color: #e0f7fa; /* สีฟ้าอ่อน */
+        }
+    </style>
+
+    <div class="container mx-auto max-w-4xl">
+        <h1 class="text-3xl font-mitr text-center mb-6 p-4 shadow-md bg-gray-800 from-green-400 to-blue-500 text-white rounded-lg">
+            <i class="fas fa-smoke" aria-hidden="true"></i>
+            แนะนำยาดม
+        </h1>
+
+        <!-- ปุ่มเข้าสู่ระบบและออกจากระบบ -->
+        <div class="d-flex justify-content-end mb-4">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="btn btn-danger">ออกจากระบบ</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-success">เข้าสู่ระบบ</a>
+            {% endif %}
+        </div>
+        
+
+        <!-- ปุ่มเพิ่มสินค้า -->
+        <div class="text-right mb-4 font-niramit">
+            <a href="{% url 'product_create' %}" class="btn btn-primary">
+                เพิ่มสินค้า
+            </a>
+        </div>
+
+        <!-- ตารางสินค้า -->
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th class="font-niramit">ชื่อสินค้า</th>
+                    <th class="font-niramit">จำนวน</th>
+                    <th class="font-niramit">ที่อยู่จัดส่ง</th>
+                    <th class="font-niramit">การจัดการ</th>
+                </tr>
+            </thead>
+            {% if products %}
+<tbody>
+    {% for product in products %}
+    <tr class="hover:bg-gray-00">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }} ชิ้น</td>
+        <td>{{ product.description }}</td>
+        <td>
+            <a href="{% url 'product_update' product.pk %}" class="btn btn-warning">แก้ไขสินค้า</a>
+            <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger">ลบสินค้า</a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+    {% else %}
+        <tr>
+        <td colspan="3">ไม่มีข้อมูลสินค้า</td>
+        </tr>
+    {% endif %}
+
+        </table>
+
+        <!-- สินค้าแนะนำ -->
+        <div class="my-20 bg-gray-800 p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-niramit text-center mb-4 text-white">สินค้าแนะนำ</h2>
+            <div class="row justify-content-center">
+                <!-- สินค้า 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top mx-auto" src="{% static 'images/หงษ์ไทย.jpg' %}" alt="ยาดมหงษ์ไทย">
+                        <div class="card-body text-center">
+                            <h5 class="card-title font-niramit">ยาดมหงษ์ไทย</h5>
+                            <a href="/yadom1" class="btn btn-success">เรียนรู้เพิ่มเติม...</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- สินค้า 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top mx-auto" src="{% static 'images/คุณเปรมา.jpg' %}" alt="ยาดมเปรมา">
+                        <div class="card-body text-center">
+                            <h5 class="card-title font-niramit">ยาดมคุณเปรม</h5>
+                            <a href="/yadom2" class="btn btn-success">เรียนรู้เพิ่มเติม...</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- สินค้า 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top mx-auto" src="{% static 'images/โบว์แดง.jpg' %}" alt="ยาดมตราโบว์แดง">
+                        <div class="card-body text-center">
+                            <h5 class="card-title font-niramit">ยาดมตราโบว์แดง</h5>
+                            <a href="/yadom3" class="btn btn-success">เรียนรู้เพิ่มเติม...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
